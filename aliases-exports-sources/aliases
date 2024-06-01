@@ -1,0 +1,26 @@
+#!/bin/zsh
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias ls='lsd --color=auto'
+    alias ll='ls -lah --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    
+fi
+
+# Aliases
+alias update='sudo nala update && sudo nala upgrade  && flatpak update && sudo snap refresh ;'
+alias clean='sudo nala autoremove && sudo apt autoclean  && flatpak remove --unused && sudo apt clean;'
+alias cls='clear'
+alias cat='batcat'
+alias cowiwa="adb connect 192.168.240.112:5555"
+# ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias cat='batcat'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias add-fire-base='flutter pub add firebase_core firebase_auth firebase_messaging firebase_storage cloud_firestore google_sign_in'
