@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Sources
-source ~/.config/zsh/plugins/syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/plugins/syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source ~/.config/zsh/plugins/autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
