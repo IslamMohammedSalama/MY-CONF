@@ -1,1 +1,7 @@
 .git
+autosuggestions/.git
+powerlevel10k/.git
+syntax-highlighting/.git
+zsh-autocomplete/.git
+zsh-completions/.git
+zsh-history-substring-search/.git
