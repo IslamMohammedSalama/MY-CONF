@@ -12,7 +12,7 @@ SAVEHIST=10000
 setopt histignorealldups sharehistory autocd extendedglob nomatch notify globdots interactivecomments
 unsetopt beep mail_warning
 bindkey -e
-
+# End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
 
@@ -24,24 +24,9 @@ zmodload zsh/complist
 _comp_options+=(globdots)
 # End of lines added by compinstall
 
-# Load zinit
-source ~/.local/share/zinit/zinit.git/zinit.zsh 
-# Define alias correctly
-alias zi='zinit'
-# Plugins configuration
-zinit light zsh-users/zsh-autosuggestions
-zinit light romkatv/powerlevel10k
-# zinit light zsh-users/zsh-syntax-highlighting
-zinit light ajeetdsouza/zoxide
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light marlonrichert/zsh-autocomplete
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-history-substring-search
-source ~/.config/zsh/aliases-exports-sources/sources
 
 fpath=(~/.config/zsh/zsh-completions/src $fpath)
-
-# ranger-cd function
+# ranger-cd
 function ranger-cd {
     tempfile="$(mktemp -t tmp.XXXXXX)"
     /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
@@ -52,33 +37,41 @@ function ranger-cd {
     rm -f -- "$tempfile"
 }
 
+# Sources
+source ~/.config/zsh/aliases-exports-sources/sources
 # BindKeys
+# ranger-cd will run by alt+r
 bindkey -s "^\er" "ranger-cd\n"
 bindkey -s "^\eC" "cls\n"
-
-
 # Evals
-{
-  eval "$(zoxide init zsh)" 2>/dev/null
-} || true
-
+eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-# Autocompletion configuration
-bindkey '^I' menu-select
+bindkey              '^I' menu-select
 bindkey "$terminfo[kcbt]" menu-select
 bindkey '\t' menu-select 
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-
+# Autocompletion
 zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
+# Override history search.
 zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
+# History menu.
 zstyle ':autocomplete:history-search-backward:*' list-lines 256
+
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
-zstyle ':autocomplete:*history*:*' insert-unambiguous yes
-zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
 export PATH=~/Devlopment/flutter/bin:$PATH
+
+
+# all Tab widgets
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+
+# all history widgets
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+
+# ^S
+zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+
+
