@@ -9,7 +9,7 @@ fi
 HISTFILE=~/.cache/zsh/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt histignorealldups sharehistory autocd extendedglob nomatch notify globdots
+setopt histignorealldups sharehistory autocd extendedglob nomatch notify globdots interactivecomments
 unsetopt beep mail_warning
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -48,8 +48,9 @@ eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey              '^I' menu-select
+bindkey "$terminfo[kcbt]" menu-select
+bindkey '\t' menu-select 
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # Autocompletion
 zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
@@ -60,4 +61,16 @@ zstyle ':autocomplete:history-search-backward:*' list-lines 256
 
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
 export PATH=~/Devlopment/flutter/bin:$PATH
+
+
+# all Tab widgets
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+
+# all history widgets
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+
+# ^S
+zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+
