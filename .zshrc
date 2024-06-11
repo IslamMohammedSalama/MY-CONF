@@ -27,8 +27,7 @@ _comp_options+=(globdots)
 # Load zinit
 source ~/.local/share/zinit/zinit.git/zinit.zsh 
 # Define alias correctly
-alias zi='zinit'
-# Plugins configuration
+# alias zi='zinit'
 zinit light zsh-users/zsh-autosuggestions
 zinit light romkatv/powerlevel10k
 # zinit light zsh-users/zsh-syntax-highlighting
@@ -37,6 +36,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light marlonrichert/zsh-autocomplete
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-history-substring-search
+
 source ~/.config/zsh/aliases-exports-sources/sources
 
 fpath=(~/.config/zsh/zsh-completions/src $fpath)
@@ -82,3 +82,7 @@ zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
 export PATH=~/Devlopment/flutter/bin:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)	
