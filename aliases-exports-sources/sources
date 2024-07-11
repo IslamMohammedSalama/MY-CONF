@@ -6,6 +6,24 @@
 # source ~/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 # source ~/.config/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 # source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# Load zinit
+source ~/.local/share/zinit/zinit.git/zinit.zsh 
+# Define alias correctly
+# alias zi='zinit'
+zinit light zsh-users/zsh-autosuggestions
+zinit light romkatv/powerlevel10k
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light ajeetdsouza/zoxide
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light marlonrichert/zsh-autocomplete
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-history-substring-search
+
 source /etc/zsh_command_not_found
 source ~/.config/zsh/aliases-exports-sources/aliases
 source ~/.config/zsh/aliases-exports-sources/exports
+
+[ -f ~/.config/fzf/.fzf.zsh ] && source ~/.config/fzf/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)	

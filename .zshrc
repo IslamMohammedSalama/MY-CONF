@@ -1,3 +1,5 @@
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,10 +8,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.cache/zsh/.histfile
+HISTFILE=~/.cache/zsh/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt histignorealldups sharehistory autocd extendedglob nomatch notify globdots interactivecomments
+setopt histignorealldups sharehistory autocd extendedglob nomatch notify globdots interactivecomments correct
 unsetopt beep mail_warning
 bindkey -e
 
@@ -24,20 +26,11 @@ zmodload zsh/complist
 _comp_options+=(globdots)
 # End of lines added by compinstall
 
-# Load zinit
-source ~/.local/share/zinit/zinit.git/zinit.zsh 
-# Define alias correctly
-# alias zi='zinit'
-zinit light zsh-users/zsh-autosuggestions
-zinit light romkatv/powerlevel10k
-# zinit light zsh-users/zsh-syntax-highlighting
-zinit light ajeetdsouza/zoxide
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light marlonrichert/zsh-autocomplete
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-history-substring-search
 
 source ~/.config/zsh/aliases-exports-sources/sources
+
+# Evals
+# eval "$(/home/islam/.local/bin/zoxide init zsh)"
 
 fpath=(~/.config/zsh/zsh-completions/src $fpath)
 
@@ -56,11 +49,6 @@ function ranger-cd {
 bindkey -s "^\er" "ranger-cd\n"
 bindkey -s "^\eC" "cls\n"
 
-
-# Evals
-{
-  eval "$(zoxide init zsh)" 2>/dev/null
-} || true
 
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
@@ -81,8 +69,6 @@ zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
-export PATH=~/Devlopment/flutter/bin:$PATH
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)	
+# Initialize zoxide early to avoid console output warning
+eval "$(zoxide init zsh)"

@@ -1,9 +1,13 @@
 #!/bin/zsh
 export ANDROID_HOME=$HOME/Devlopment/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
 export CHROME_EXECUTABLE=/usr/bin/brave-browser
-export PATH="/home/islam/Devlopment/Android/Sdk/cmdline-tools/latest/bin/:$PATH"
-export PATH="$PATH":"$HOME/.pub-cache/bin:$PATH"
-export PATH="$PATH":"$HOME/.local/bin:$PATH"
-export PATH="~/Devlopment/flutter/bin:$PATH"
-
+export PATH=$HOME/Devlopment/Android/Sdk/cmdline-tools/latest/bin/:$PATH
+export PATH=$HOME/.pub-cache/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/Devlopment/flutter/bin:$PATH
+export PATH=$HOME/Devlopment/Python/bin:$PATH
+export C_INCLUDE_PATH="$HOME/.local/include:$C_INCLUDE_PATH"
+export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"

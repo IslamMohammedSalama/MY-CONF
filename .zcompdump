@@ -1851,7 +1851,6 @@ _comps=(
 'yash' '_sh'
 'yast' '_yast'
 'yast2' '_yast'
-'youtube-dl' '_youtube-dl'
 'ypbind' '_yp'
 'ypcat' '_yp'
 'ypmatch' '_yp'
@@ -1865,6 +1864,7 @@ _comps=(
 'ytalk' '_other_accounts'
 'yum' '_yum'
 'yumdb' '_yum'
+'z' '__zoxide_z_complete'
 'zargs' '_zargs'
 'zcalc' '_zcalc'
 '-zcalc-line-' '_zcalc_line'
@@ -2064,7 +2064,7 @@ autoload -Uz _autocomplete__command _autocomplete__compadd_opts_len _autocomplet
             _sd_outputmodes _sd_unit_files _snap _systemctl _systemd \
             _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn _systemd-path \
             _systemd-run _systemd-tmpfiles _timedatectl _ubuntu-report _udevadm \
-            _vlc _wl-copy _wl-paste _youtube-dl _cdr \
+            _vlc _wl-copy _wl-paste _zoxide _cdr \
             _floppy _logical_volumes _lscfg _lsdev _lslv \
             _lspv _lsvg _object_classes _physical_volumes _smit \
             _volume_groups _bsdconfig _bsd_disks _bsdinstall _bsd_pkg \
