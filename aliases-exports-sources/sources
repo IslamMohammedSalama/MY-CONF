@@ -23,7 +23,3 @@ zinit light zsh-users/zsh-history-substring-search
 source /etc/zsh_command_not_found
 source ~/.config/zsh/aliases-exports-sources/aliases
 source ~/.config/zsh/aliases-exports-sources/exports
-
-[ -f ~/.config/fzf/.fzf.zsh ] && source ~/.config/fzf/.fzf.zsh
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)	

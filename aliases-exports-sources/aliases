@@ -13,8 +13,8 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Aliases
-alias update='sudo nala update && sudo nala upgrade  && flatpak update && sudo snap refresh ;'
-alias clean='sudo nala autoremove && sudo apt autoclean  && flatpak remove --unused && sudo apt clean;'
+alias update='sudo apt update && sudo apt upgrade  && flatpak update && sudo snap refresh ;'
+alias clean='sudo apt autoremove && sudo apt autoclean  && flatpak remove --unused && sudo apt clean;'
 alias cls='clear'
 alias cat='batcat'
 alias cowiwa="adb connect 192.168.240.112:5555"

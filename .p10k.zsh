@@ -39,7 +39,7 @@
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
-    # prompt_char           # prompt symbol
+    prompt_char           # prompt symbol
   )
 
   # The list of segments shown on the right. Fill it with less important segments.
@@ -117,8 +117,8 @@
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy
     # battery               # internal battery
-    # wifi                  # wifi speed
-    example               # example user-defined segment (see prompt_example function below)
+    wifi                  # wifi speed
+    # example               # example user-defined segment (see prompt_example function below)
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
@@ -147,7 +147,7 @@
   # as POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_FOREGROUND below.
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%244F╭─'
   typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='%244F├─'
-  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%244F╰─%224F❯'
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%244F╰─'
   # typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%244F╰─ '
 
   # Connect right prompt lines with these symbols.
