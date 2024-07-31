@@ -110,10 +110,11 @@
     per_directory_history   # Oh My Zsh per-directory-history local/global indicator
     # cpu_arch              # CPU architecture
     time                    # current time
-    battery               # internal battery
+    # battery               # internal battery
     # =========================[ Line #2 ]=========================
     newline
-    disk_usage            # disk usage
+    battery               # internal battery
+
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy
