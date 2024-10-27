@@ -1,4 +1,10 @@
+
 #!/bin/zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+   
 # Sources
 # source ~/.config/zsh/plugins/syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 # source ~/.config/zsh/plugins/autosuggestions/zsh-autosuggestions.zsh
@@ -8,19 +14,19 @@
 # source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Load zinit
-source ~/.local/share/zinit/zinit.git/zinit.zsh
 # Define alias correctly
 # alias zi='zinit'
-zinit ice depth=1;zinit light zsh-users/zsh-autosuggestions
-zinit light romkatv/powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit ice depth=1;zinit light zsh-users/zsh-syntax-highlighting
-zinit ice depth=1;zinit light ajeetdsouza/zoxide
-zinit ice depth=1;zinit light zdharma-continuum/fast-syntax-highlighting
-zinit ice depth=1;zinit light marlonrichert/zsh-autocomplete
-zinit ice depth=1;zinit light zsh-users/zsh-completions
-zinit ice depth=1;zinit light zsh-users/zsh-history-substring-search
-zinit ice depth=1;zinit light hlissner/zsh-autopair
+
+zinit ice depth=1;zinit load zsh-users/zsh-autosuggestions  
+zinit ice depth=1;zinit load zsh-users/zsh-syntax-highlighting  
+zinit ice depth=1;zinit load ajeetdsouza/zoxide  
+zinit ice depth=1;zinit load zdharma-continuum/fast-syntax-highlighting  
+zinit ice depth=1;zinit load marlonrichert/zsh-autocomplete 
+zinit ice depth=1;zinit load zsh-users/zsh-completions 
+zinit ice depth=1;zinit load zsh-users/zsh-history-substring-search  
+zinit ice depth=1;zinit load hlissner/zsh-autopair 
+zinit ice depth=1; zinit load romkatv/powerlevel10k 
+
 
 source /etc/zsh_command_not_found
 source ~/.config/zsh/aliases-exports-sources/aliases

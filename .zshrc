@@ -18,8 +18,9 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
 
-autoload -Uz compinit promptinit && promptinit powerlevel10k
+autoload -Uz compinit promptinit zinit && promptinit powerlevel10k
 compinit -C
+(( ${+_comps} )) && _comps[zinit]=_zinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
