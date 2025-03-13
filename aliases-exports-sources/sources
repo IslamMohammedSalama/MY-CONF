@@ -16,17 +16,44 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Define alias correctly
 # alias zi='zinit'
 
-zinit ice depth=1;zinit load zsh-users/zsh-autosuggestions  
-# zinit ice depth=1;zinit load zsh-users/zsh-syntax-highlighting  
-zinit ice depth=1;zinit load ajeetdsouza/zoxide  
-zinit ice depth=1;zinit load zdharma-continuum/fast-syntax-highlighting  
-zinit ice depth=1;zinit load marlonrichert/zsh-autocomplete 
-zinit ice depth=1;zinit load zsh-users/zsh-completions 
-zinit ice depth=1;zinit load zsh-users/zsh-history-substring-search  
-zinit ice depth=1;zinit load hlissner/zsh-autopair 
-zinit ice depth=1; zinit load romkatv/powerlevel10k 
+# zinit ice depth=1;zinit load zsh-users/zsh-autosuggestions  
+# # zinit ice depth=1;zinit load zsh-users/zsh-syntax-highlighting  
+# zinit ice depth=1;zinit load ajeetdsouza/zoxide  
+# zinit ice depth=1;zinit load zdharma-continuum/fast-syntax-highlighting  
+# zinit ice depth=1;zinit load marlonrichert/zsh-autocomplete 
+# zinit ice depth=1;zinit load zsh-users/zsh-completions 
+# zinit ice depth=1;zinit load zsh-users/zsh-history-substring-search  
+# zinit ice depth=1;zinit load hlissner/zsh-autopair 
+# zinit ice depth=1; zinit load romkatv/powerlevel10k 
 
+# Load critical plugins first
+zinit ice depth=1 lucid
+zinit load romkatv/powerlevel10k
 
-source /etc/zsh_command_not_found
+zinit ice depth=1 lucid
+zinit load zsh-users/zsh-autosuggestions
+
+zinit ice depth=1 lucid
+zinit load zdharma-continuum/fast-syntax-highlighting
+
+# Lazy-load zsh-autocomplete on first keystroke
+zinit ice depth=1 lucid
+# zinit ice depth=1 lucid trigger-load'!key'
+zinit load marlonrichert/zsh-autocomplete
+
+# Other plugins with optimized loading
+zinit ice depth=1 lucid wait"0a"
+zinit load hlissner/zsh-autopair
+
+zinit ice depth=1 lucid wait"0b"
+zinit load zsh-users/zsh-completions
+
+zinit ice depth=1 lucid wait"0c"
+zinit load zsh-users/zsh-history-substring-search
+
+zinit ice depth=1 lucid wait"0d"
+zinit load ajeetdsouza/zoxide
+
+# source /etc/zsh_command_not_found
 source ~/.config/zsh/aliases-exports-sources/aliases
 source ~/.config/zsh/aliases-exports-sources/exports

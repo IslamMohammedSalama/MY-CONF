@@ -1,3 +1,6 @@
+zmodload zsh/zprof
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -17,11 +20,15 @@ bindkey -e
 zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
 
 autoload -Uz compinit promptinit zinit && promptinit powerlevel10k
-compinit -C
+# compinit -C
+autoload -Uz compinit 
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+else
+  compinit -C
+fi
 (( ${+_comps} )) && _comps[zinit]=_zinit
 zmodload zsh/complist
-zmodload zsh/zprof
-DISABLE_AUTO_UPDATE="true"
 _comp_options+=(globdots)
 # End of lines added by compinstall
 
@@ -68,15 +75,17 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-
+# Disable certain completion types
+zstyle ':autocomplete:*' recent-dirs true
+zstyle ':autocomplete:*' system-directories true
 # Initialize zoxide early to avoid console output warning
 eval "$(zoxide init zsh)"
 
+# Optimize zsh-autocomplete settings
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1    # Delay binding to widgets
+ZSH_AUTOCONFIRM_DEFAULT_COMMANDS=1 # Faster confirmation
+ZSH_AUTOCONFIRM_SKIP_PROMPT=1      # Skip confirmation prompts
 
+# Async compilation for zsh-autocomplete
+zinit ice compile'{src/*.zsh,src/strategies/*.zsh}'
 
-# fnm
-FNM_PATH="/home/islam/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/islam/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
