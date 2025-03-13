@@ -1,5 +1,3 @@
-
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -21,9 +19,9 @@ zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
 autoload -Uz compinit promptinit zinit && promptinit powerlevel10k
 compinit -C
 (( ${+_comps} )) && _comps[zinit]=_zinit
-zstyle ':completion:*' menu select
 zmodload zsh/complist
-
+zmodload zsh/zprof
+DISABLE_AUTO_UPDATE="true"
 _comp_options+=(globdots)
 # End of lines added by compinstall
 
@@ -61,6 +59,7 @@ bindkey "$terminfo[kcbt]" menu-select
 bindkey '\t' menu-select 
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
+zstyle ':completion:*' menu select
 zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
 zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
 zstyle ':autocomplete:history-search-backward:*' list-lines 256
@@ -70,6 +69,14 @@ zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
-
 # Initialize zoxide early to avoid console output warning
 eval "$(zoxide init zsh)"
+
+
+
+# fnm
+FNM_PATH="/home/islam/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/islam/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
