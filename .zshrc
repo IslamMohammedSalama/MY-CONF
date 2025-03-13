@@ -1,5 +1,3 @@
-zmodload zsh/zprof
-
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -29,6 +27,7 @@ else
 fi
 (( ${+_comps} )) && _comps[zinit]=_zinit
 zmodload zsh/complist
+zmodload zsh/zprof
 _comp_options+=(globdots)
 # End of lines added by compinstall
 
