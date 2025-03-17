@@ -1,4 +1,3 @@
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -10,9 +9,22 @@ fi
 HISTFILE=~/.cache/zsh/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+HISTDUP=erase
+
 setopt histignorealldups sharehistory autocd extendedglob nomatch notify globdots interactivecomments correct
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 unsetopt beep mail_warning
+# Keybindings
 bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
@@ -33,6 +45,7 @@ _comp_options+=(globdots)
 
 
 source ~/.config/zsh/aliases-exports-sources/sources
+# Load completions
 
 # Evals
 # eval "$(/home/islam/.local/bin/zoxide init zsh)"
@@ -60,10 +73,10 @@ bindkey -s "^\eC" "cls\n"
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # Autocompletion configuration
-bindkey '^I' menu-select
-bindkey "$terminfo[kcbt]" menu-select
-bindkey '\t' menu-select 
-bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+# bindkey '^I' menu-select
+# bindkey "$terminfo[kcbt]" menu-select
+# bindkey '\t' menu-select 
+# bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
 zstyle ':completion:*' menu select
 zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
@@ -74,17 +87,14 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-# Disable certain completion types
-zstyle ':autocomplete:*' recent-dirs true
-zstyle ':autocomplete:*' system-directories true
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd --color $realpath'
+
 # Initialize zoxide early to avoid console output warning
-eval "$(zoxide init zsh)"
-
-# Optimize zsh-autocomplete settings
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1    # Delay binding to widgets
-ZSH_AUTOCONFIRM_DEFAULT_COMMANDS=1 # Faster confirmation
-ZSH_AUTOCONFIRM_SKIP_PROMPT=1      # Skip confirmation prompts
-
-# Async compilation for zsh-autocomplete
-zinit ice compile'{src/*.zsh,src/strategies/*.zsh}'
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
