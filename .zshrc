@@ -7,24 +7,32 @@ fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=5000
+SAVEHIST=5000
 HISTDUP=erase
 
-setopt histignorealldups sharehistory autocd extendedglob nomatch notify globdots interactivecomments correct
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
+setopt histignorealldups 
+setopt sharehistory 
+setopt autocd 
+setopt extendedglob 
+setopt nomatch 
+setopt notify  
+setopt globdots
+setopt interactivecomments 
+setopt correct 
+setopt appendhistory  
+setopt hist_ignore_space 
+setopt hist_ignore_all_dups 
+setopt hist_save_no_dups 
+setopt hist_ignore_dups 
 setopt hist_find_no_dups
+
 unsetopt beep mail_warning
 # Keybindings
 bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
+# bindkey '^p' history-search-backward
+# bindkey '^n' history-search-forward
+# bindkey '^[w' kill-region
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
@@ -50,7 +58,7 @@ source ~/.config/zsh/aliases-exports-sources/sources
 # Evals
 # eval "$(/home/islam/.local/bin/zoxide init zsh)"
 
-fpath=(~/.config/zsh/zsh-completions/src $fpath)
+# fpath=(~/.config/zsh/zsh-completions/src $fpath)
 
 # ranger-cd function
 function ranger-cd {
@@ -65,7 +73,7 @@ function ranger-cd {
 
 # BindKeys
 bindkey -s "^\er" "ranger-cd\n"
-bindkey -s "^\eC" "cls\n"
+# bindkey -s "^\eC" "cls\n"
 
 
 
@@ -78,15 +86,15 @@ bindkey -s "^\eC" "cls\n"
 # bindkey '\t' menu-select 
 # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
-zstyle ':completion:*' menu select
-zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
-zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
-zstyle ':autocomplete:history-search-backward:*' list-lines 256
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
-zstyle ':autocomplete:*history*:*' insert-unambiguous yes
-zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+# zstyle ':completion:*' menu select
+# zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
+# zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
+# zstyle ':autocomplete:history-search-backward:*' list-lines 256
+# zstyle ':completion:*' list-colors ''
+# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+# zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+# zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
