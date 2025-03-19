@@ -2,8 +2,9 @@
 
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/Devlopment/Python/bin:$PATH
-export PATH=/home/islam/node_modules/.bin:$PATH
+export PATH=$HOME/node_modules/.bin:$PATH
 # export PATH=$HOME/Devlopment/nodejs/bin:$PATH
+export PATH=$HOME/Devlopment/lua/bin:$PATH
 export C_INCLUDE_PATH="$HOME/.local/include:$C_INCLUDE_PATH"
 export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
