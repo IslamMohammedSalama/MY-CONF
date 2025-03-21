@@ -37,15 +37,12 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
 
-autoload -Uz compinit promptinit zinit && promptinit powerlevel10k
+autoload -Uz compinit 
 # compinit -C
 autoload -Uz compinit 
 # if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ${ZDOTDIR}/.zcompdump(#qN.mh+24) 2>/dev/null)" ]; then
-  compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
-else
-  compinit -C
-fi
+compinit -Cd "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+
 (( ${+_comps} )) && _comps[zinit]=_zinit
 zmodload zsh/complist
 zmodload zsh/zprof
@@ -104,8 +101,14 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
-zstyle ':omz:plugins:nvm' lazy yes
+# zstyle ':omz:plugins:nvm' lazy yes
 
 # Initialize zoxide early to avoid console output warning
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+
+
+# Disable auto-rebinding
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
