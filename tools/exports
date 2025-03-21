@@ -3,16 +3,22 @@
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/Devlopment/Python/bin:$PATH
 export PATH=$HOME/node_modules/.bin:$PATH
-# export PATH=$HOME/Devlopment/nodejs/bin:$PATH
+export PATH=$HOME/Devlopment/nodejs/bin:$PATH
 export PATH=$HOME/Devlopment/lua/bin:$PATH
 export C_INCLUDE_PATH="$HOME/.local/include:$C_INCLUDE_PATH"
 export LIBRARY_PATH="$HOME/.local/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
-export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="$HOME/.nvm"
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
+# export NVM_LAZY_LOAD=true
+# export NVM_COMPLETION=true
 
+# fnm
+# FNM_PATH="/home/islam/.local/share/fnm"
+# if [ -d "$FNM_PATH" ]; then
+#   export PATH="/home/islam/.local/share/fnm:$PATH"
+#   eval "`fnm env`"
+# fi

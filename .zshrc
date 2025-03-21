@@ -73,8 +73,6 @@ function ranger-cd {
 bindkey -s "^\er" "ranger-cd\n"
 # bindkey -s "^\eC" "cls\n"
 
-
-
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
@@ -101,14 +99,11 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
-# zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' lazy yes
 
 # Initialize zoxide early to avoid console output warning
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-
-
 # Disable auto-rebinding
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
