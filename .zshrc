@@ -50,7 +50,7 @@ _comp_options+=(globdots)
 # End of lines added by compinstall
 
 
-source ~/.config/zsh/aliases-exports-sources/sources
+source ~/.config/zsh/tools/sources
 # Load completions
 
 # Evals

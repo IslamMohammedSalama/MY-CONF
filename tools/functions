@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do time bash -i -c exit ; time zsh -i -c exit ; done
+}
+

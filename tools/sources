@@ -44,5 +44,6 @@ zinit ice wait lucid;zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::command-not-found
 
 # source /etc/zsh_command_not_found
-source ~/.config/zsh/aliases-exports-sources/aliases
-source ~/.config/zsh/aliases-exports-sources/exports
+source ~/.config/zsh/tools/aliases
+source ~/.config/zsh/tools/exports
+source ~/.config/zsh/tools/functions
