@@ -151,3 +151,5 @@ __prompt_command() {
         # PS1="[${BRed}$curr_exit${RCol}]$PS1"
     fi
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

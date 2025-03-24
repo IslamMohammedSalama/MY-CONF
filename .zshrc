@@ -101,9 +101,12 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 zstyle ':omz:plugins:nvm' lazy yes
 
-# Initialize zoxide early to avoid console output warning
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
 # Disable auto-rebinding
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+ZSH_AUTOSUGGEST_MANUAL_REBIND=0
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# Initialize zoxide early to avoid console output warning
+eval "$(zoxide init --cmd cd zsh)"
