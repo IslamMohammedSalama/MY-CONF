@@ -104,9 +104,12 @@ zstyle ':omz:plugins:nvm' lazy yes
 # Disable auto-rebinding
 ZSH_AUTOSUGGEST_MANUAL_REBIND=0
 
+# only for git
+zstyle ':completion:*:*:git:*' fzf-search-display true
+# or for everything
+zstyle ':completion:*' fzf-search-display true
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
 
 # Initialize zoxide early to avoid console output warning
 eval "$(zoxide init --cmd cd zsh)"
