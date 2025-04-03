@@ -92,22 +92,17 @@ bindkey -s "^\er" "ranger-cd\n"
 # zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
+# Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
-zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # Disable auto-rebinding
 ZSH_AUTOSUGGEST_MANUAL_REBIND=0
-
-# only for git
-zstyle ':completion:*:*:git:*' fzf-search-display true
-# or for everything
-zstyle ':completion:*' fzf-search-display true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
