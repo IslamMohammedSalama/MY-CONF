@@ -39,7 +39,6 @@ zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
 
 autoload -Uz compinit 
 # compinit -C
-autoload -Uz compinit 
 # if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 compinit -Cd "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
 
@@ -48,11 +47,9 @@ zmodload zsh/complist
 zmodload zsh/zprof
 _comp_options+=(globdots)
 # End of lines added by compinstall
-
-
 source ~/.config/zsh/tools/sources
 # Load completions
-
+zinit cdreplay -q
 # Evals
 # eval "$(/home/islam/.local/bin/zoxide init zsh)"
 
@@ -94,17 +91,12 @@ bindkey -s "^\er" "ranger-cd\n"
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd -1 --color=always $realpath'
+zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
-# Disable auto-rebinding
-ZSH_AUTOSUGGEST_MANUAL_REBIND=0
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Initialize zoxide early to avoid console output warning
 eval "$(zoxide init --cmd cd zsh)"

@@ -49,3 +49,7 @@ zinit snippet OMZP::command-not-found
 source ~/.config/zsh/tools/aliases
 source ~/.config/zsh/tools/exports
 source ~/.config/zsh/tools/functions
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
