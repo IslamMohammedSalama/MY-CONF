@@ -28,32 +28,26 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 unsetopt beep mail_warning
+
 # Keybindings
 bindkey -e
-# bindkey '^p' history-search-backward
-# bindkey '^n' history-search-forward
-# bindkey '^[w' kill-region
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/islam/.config/zsh/.zshrc'
 
 autoload -Uz compinit 
-# compinit -C
-# if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 compinit -Cd "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
 
-(( ${+_comps} )) && _comps[zinit]=_zinit
 zmodload zsh/complist
 zmodload zsh/zprof
+(( ${+_comps} )) && _comps[zinit]=_zinit
 _comp_options+=(globdots)
+
 # End of lines added by compinstall
 source ~/.config/zsh/tools/sources
+
 # Load completions
 zinit cdreplay -q
-# Evals
-# eval "$(/home/islam/.local/bin/zoxide init zsh)"
-
-# fpath=(~/.config/zsh/zsh-completions/src $fpath)
 
 # ranger-cd function
 function ranger-cd {
@@ -68,11 +62,21 @@ function ranger-cd {
 
 # BindKeys
 bindkey -s "^\er" "ranger-cd\n"
-# bindkey -s "^\eC" "cls\n"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 -A --color=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd -1 -A --color=always $realpath'
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd -1 -A --color=always $word'
+
+# My Old Configs With zsh-autocomplete plugin
 # Autocompletion configuration
 # bindkey '^I' menu-select
 # bindkey "$terminfo[kcbt]" menu-select
@@ -88,15 +92,3 @@ bindkey -s "^\er" "ranger-cd\n"
 # zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 # zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-
-# Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd -1 --color=always $realpath'
-zstyle ':fzf-tab:*' switch-group '<' '>'
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
-# Initialize zoxide early to avoid console output warning
-eval "$(zoxide init --cmd cd zsh)"

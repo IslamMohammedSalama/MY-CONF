@@ -1,0 +1,3 @@
+#!/bin/zsh
+# Load Zoxide
+eval "$(zoxide init --cmd cd zsh)"

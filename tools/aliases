@@ -9,18 +9,18 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-    
 fi
 
 # Aliases
 alias update='sudo apt update && sudo apt upgrade  && flatpak update && sudo snap refresh && upgrade-zsh-plugins && zinit update --all ;'
 alias clean='sudo apt autoremove && sudo apt autoclean  && flatpak remove --unused && sudo apt clean;'
 alias cls='clear'
-# alias cat='batcat'
 # ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias ip='ip -color'
+
+# alias cat='batcat'
 # alias python='~/Devlopment/Python/bin/python3'
 # alias py='~/Devlopment/Python/bin/python3'
-alias ip='ip -color'

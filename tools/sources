@@ -3,53 +3,46 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
+
+zinit ice depth"1"; zinit light romkatv/powerlevel10k 
+zinit ice depth"1"; zinit light zsh-users/zsh-autosuggestions  
+zinit ice wait lucid; zinit light zdharma-continuum/fast-syntax-highlighting  
+zinit ice wait lucid; zinit light zsh-users/zsh-completions 
+zinit ice wait lucid; zinit light hlissner/zsh-autopair  
+zinit ice wait lucid; zinit light Aloxaf/fzf-tab
+
+zinit snippet OMZP::command-not-found
+
+source ~/.config/zsh/tools/aliases
+source ~/.config/zsh/tools/exports
+source ~/.config/zsh/tools/functions
+source ~/.config/zsh/tools/evals
+
+# Source Fzf 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
    
-# Sources
+# Sources # My Plugins Before zinit
 # source ~/.config/zsh/plugins/syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 # source ~/.config/zsh/plugins/autosuggestions/zsh-autosuggestions.zsh
 # source ~/.config/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # source ~/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 # source ~/.config/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 # source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.config/zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-bindkey '^I' fzf_completion
 
-# Load zinit
-# Define alias correctly
-# alias zi='zinit'
-
-zinit ice depth"1"; zinit light romkatv/powerlevel10k 
-zinit ice wait lucid;zinit light zsh-users/zsh-autosuggestions  
+# Unused Plugins
+# zinit ice depth"1";zinit light zsh-users/zsh-history-substring-search  
 # zinit ice depth"1";zinit light zsh-users/zsh-syntax-highlighting  
 # zinit ice depth"1";zinit light ajeetdsouza/zoxide  
-# zinit ice depth"1";zinit light zdharma-continuum/fast-syntax-highlighting  
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+
+# Makes Errors With Fzf Contabity with zoxide 
+#zinit wait lucid for \
+# atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+#    zdharma-continuum/fast-syntax-highlighting \
+# blockf \
+#    zsh-users/zsh-completions \
+# atload"!_zsh_autosuggest_start" \
+#    zsh-users/zsh-autosuggestions
 # zinit ice wait lucid;zinit light marlonrichert/zsh-autocomplete 
-zinit ice wait lucid;zinit light zsh-users/zsh-completions 
-# zinit ice depth"1";zinit light zsh-users/zsh-history-substring-search  
-zinit ice wait lucid;zinit light hlissner/zsh-autopair 
-zinit ice wait lucid;zinit light Aloxaf/fzf-tab
 
-# zinit snippet OMZL::git.zsh
-# zinit snippet OMZP::git
-# zinit snippet OMZP::sudo
-# zinit snippet OMZP::archlinux
-# zinit snippet OMZP::aws
-# zinit snippet OMZP::kubectl
-# zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
-
+# Old Way To Get The command not found Plugin
 # source /etc/zsh_command_not_found
-source ~/.config/zsh/tools/aliases
-source ~/.config/zsh/tools/exports
-source ~/.config/zsh/tools/functions
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
