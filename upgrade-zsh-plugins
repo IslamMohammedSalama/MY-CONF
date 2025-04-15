@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+for dir in $HOME/.config/zsh/plugins/**; do 
+  echo -e "\n\033[1;33mUpgrade \033[0m\033[1;31m$(basename $dir)\033[0m \033[1;33mPlugin\033[0m"
+  cd "$dir"
+  # Checkout the default branch (e.g., main/master) to avoid detached HEAD
+  git checkout main 2>/dev/null || git checkout master 2>/dev/null
+  echo -e "\033[0;35m$(git pull)\033[0m" 
+done
+echo -e "\n\033[1;32mAll Plugins Are Up To Date\033[0m"
