@@ -1,0 +1,31 @@
+[submodule "plugins/autosuggestions"]
+    path = plugins/autosuggestions
+    url = https://github.com/zsh-users/zsh-autosuggestions.git
+
+[submodule "plugins/powerlevel10k"]
+    path = plugins/powerlevel10k
+    url = https://github.com/romkatv/powerlevel10k.git
+
+[submodule "plugins/syntax-highlighting"]
+    path = plugins/syntax-highlighting
+    url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+[submodule "plugins/zsh-completions"]
+    path = plugins/zsh-completions
+    url = https://github.com/zsh-users/zsh-completions.git
+
+[submodule "plugins/zsh-history-substring-search"]
+    path = plugins/zsh-history-substring-search
+    url = https://github.com/zsh-users/zsh-history-substring-search.git
+    
+[submodule "plugins/fzf-tab-completion"]
+    path = plugins/fzf-tab-completion
+    url = https://github.com/lincheney/fzf-tab-completion.git  # Check this URL!
+    
+[submodule "plugins/zsh-autocomplete"]
+    path = plugins/zsh-autocomplete
+    url = https://github.com/marlonrichert/zsh-autocomplete.git
+    
+[submodule "plugins/fzf-tab"]
+    path = plugins/fzf-tab
+    url = https://github.com/Aloxaf/fzf-tab.git
