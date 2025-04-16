@@ -4,12 +4,21 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit ice depth"1"; zinit light romkatv/powerlevel10k 
-zinit ice depth"1"; zinit light zsh-users/zsh-autosuggestions  
-zinit ice wait lucid; zinit light zdharma-continuum/fast-syntax-highlighting  
-zinit ice wait lucid; zinit light zsh-users/zsh-completions 
-zinit ice wait lucid; zinit light hlissner/zsh-autopair  
+zinit ice depth"1"; zinit light romkatv/powerlevel10k
 zinit ice wait lucid; zinit light Aloxaf/fzf-tab
+zinit ice depth"1"; zinit light zsh-users/zsh-autosuggestions  
+# zinit ice wait lucid; zinit light zdharma-continuum/fast-syntax-highlighting  
+zinit ice wait lucid; zinit light zsh-users/zsh-completions 
+zinit ice wait lucid; zinit light hlissner/zsh-autopair 
+
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+ # atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
 
 zinit snippet OMZP::command-not-found
 
@@ -32,17 +41,15 @@ source ~/.config/zsh/tools/evals
 # Unused Plugins
 # zinit ice depth"1";zinit light zsh-users/zsh-history-substring-search  
 # zinit ice depth"1";zinit light zsh-users/zsh-syntax-highlighting  
-# zinit ice depth"1";zinit light ajeetdsouza/zoxide  
-
+# zinit ice depth"1";zinit light ajeetdsouza/zoxide 
+# zinit ice wait lucid;zinit light marlonrichert/zsh-autocomplete
 # Makes Errors With Fzf Contabity with zoxide 
-#zinit wait lucid for \
-# atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-#    zdharma-continuum/fast-syntax-highlighting \
-# blockf \
-#    zsh-users/zsh-completions \
-# atload"!_zsh_autosuggest_start" \
-#    zsh-users/zsh-autosuggestions
-# zinit ice wait lucid;zinit light marlonrichert/zsh-autocomplete 
-
+# zinit wait lucid for \
+#  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+#     zdharma-continuum/fast-syntax-highlighting \
+#  blockf \
+#     zsh-users/zsh-completions \
+#  atload"!_zsh_autosuggest_start" \
+#     zsh-users/zsh-autosuggestions
 # Old Way To Get The command not found Plugin
 # source /etc/zsh_command_not_found
