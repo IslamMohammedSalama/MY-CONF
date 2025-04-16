@@ -1,0 +1,25 @@
+#!/bin/sh
+declare -A osInfo;
+osInfo[/etc/redhat-release]=yum
+osInfo[/etc/arch-release]=pacman
+osInfo[/etc/gentoo-release]=emerge
+osInfo[/etc/SuSE-release]=zypp
+osInfo[/etc/debian_version]=apt-get
+osInfo[/etc/alpine-release]=apk
+
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+        echo Package manager: ${osInfo[$f]}
+        sudo ${osInfo[$f]} install zsh tmux lsd fzf zoxide bash
+    fi
+done
+mkdir ~/.config/zsh
+git clone https://github.com/IslamMohammedSalama/MY-CONF.git ~/.config/zsh
+mv ~/.config/zsh/.zshenv ~/.zshenv
+mkdir ~/.config/tmux
+tmux source ~/.config/tmux/tmux.conf
+mv ~/.config/zsh/tmux.conf ~/.config/tmux/tmux.conf
+mkdir ~/.local/bin
+mv ~/.config/zsh/upgrade-zsh-plugins ~/.local/bin/upgrade-zsh-plugins
+mv ~/.config/zsh/.bashrc ~/.bashrc
