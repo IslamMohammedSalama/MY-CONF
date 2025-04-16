@@ -1,4 +1,5 @@
 #!/bin/sh
+main() {
 declare -A osInfo;
 osInfo[/etc/redhat-release]=yum
 osInfo[/etc/arch-release]=pacman
@@ -18,8 +19,12 @@ mkdir ~/.config/zsh
 git clone https://github.com/IslamMohammedSalama/MY-CONF.git ~/.config/zsh
 mv ~/.config/zsh/.zshenv ~/.zshenv
 mkdir ~/.config/tmux
-tmux source ~/.config/tmux/tmux.conf
 mv ~/.config/zsh/tmux.conf ~/.config/tmux/tmux.conf
+tmux source ~/.config/tmux/tmux.conf
 mkdir ~/.local/bin
 mv ~/.config/zsh/upgrade-zsh-plugins ~/.local/bin/upgrade-zsh-plugins
 mv ~/.config/zsh/.bashrc ~/.bashrc
+}
+{
+    main "$@" || exit 1
+}

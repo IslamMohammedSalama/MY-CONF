@@ -15,5 +15,5 @@ Fast Configuration is engineered to minimize startup time and deliver an instant
 
 ## Installation
 ```sh
-    
+     curl -fsSL https://raw.githubusercontent.com/IslamMohammedSalama/MY-CONF/refs/heads/main/install | bash
 ```
