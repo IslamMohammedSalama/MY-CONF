@@ -20,14 +20,16 @@ zinit wait lucid for \
     zsh-users/zsh-autosuggestions
  # atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
 
-zinit snippet OMZP::command-not-found
+# zinit snippet OMZP::command-not-found
+# command-not-found plugin
+source /etc/zsh_command_not_found
 
 source ~/.config/zsh/tools/aliases
 source ~/.config/zsh/tools/exports
 source ~/.config/zsh/tools/functions
 source ~/.config/zsh/tools/evals
 
-# Source Fzf 
+# Source Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
    
 # Sources # My Plugins Before zinit
@@ -52,4 +54,4 @@ source ~/.config/zsh/tools/evals
 #  atload"!_zsh_autosuggest_start" \
 #     zsh-users/zsh-autosuggestions
 # Old Way To Get The command not found Plugin
-# source /etc/zsh_command_not_found
+
