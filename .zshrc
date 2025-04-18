@@ -74,7 +74,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 -A --color=always $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd -1 -A --color=always $realpath'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd -1 -A --color=always $word'
 
 # My Old Configs With zsh-autocomplete plugin
 # Autocompletion configuration
