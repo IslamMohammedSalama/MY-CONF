@@ -75,7 +75,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='lsd --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -133,7 +133,6 @@ export C_INCLUDE_PATH="$HOME/local/include:$C_INCLUDE_PATH"
 export LIBRARY_PATH="$HOME/local/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
 
-eval "$(zoxide init --cmd cd bash)"
 # Show exit status on failure.
 # PROMPT_COMMAND=__prompt_command
 
@@ -153,30 +152,19 @@ __prompt_command() {
 }
 eval "$(starship init bash)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(zoxide init --cmd cd bash)"
 
-# Check if we are in a minimal interactive shell used by 'time' or 'timezsh'
-# This checks for interactive shell AND the executed command being exactly 'exit'
-# Handles both Bash ($BASH_VERSION, $BASH_COMMAND) and Zsh ($ZSH_VERSION, $ZSH_EVAL_TRUE)
-if ( [[ -n "$BASH_VERSION" && -o interactive && "$BASH_COMMAND" == "exit" ]] ) || \
-   ( [[ -n "$ZSH_VERSION" && -o interactive && "$ZSH_EVAL_TRUE" == "exit" ]] ); then
-
-  # If true, we are in the benchmark shell context. Do nothing.
-  :
-
-else
-  # Otherwise, proceed with normal ble.sh setup attempt.
-  # Attempt sequence: source ble.sh && ble-import 1 && ble-import 2
-  # Use || to execute the fallback block if the chain fails (any command returns non-zero).
-  # Output of sourced/imported commands is suppressed (>/dev/null 2>&1).
-  source ~/.local/share/blesh/ble.sh >/dev/null 2>&1 \
-    && command -v ble-import >/dev/null && ble-import -d integration/fzf-completion >/dev/null 2>&1 \
-    && command -v ble-import >/dev/null && ble-import -d integration/fzf-key-bindings >/dev/null 2>&1 \
-    || { # This block runs ONLY if the above chained sequence failed (in a non-benchmark shell).
-         echo "Warning: Failed during ble.sh setup or integration import." >&2
-         echo "Applying fallback prompt settings..." >&2
-         # Run the specific fallback command you requested
-         set color_prompt force_color_prompt
-         # Optional: keep or remove a confirmation message if needed
-         # echo "Fallback 'set color_prompt force_color_prompt' executed." >&2
-       }
-fi
+source ~/.local/share/blesh/ble.sh \
+   && ble-import -d integration/fzf-completion \
+   && ble-import -d integration/fzf-key-bindings \
+   || { # The '||' executes the block inside the {} if the chained commands fail
+        echo "Warning: Failed during ble.sh setup or integration import." >&2
+        echo "Applying fallback prompt settings..." >&2
+ 
+        # Run the fallback command
+        # Reminder: Effectiveness depends on the shell/context.
+        # This might not be the standard Bash way to set prompt colors (PS1 variable is).
+        set color_prompt force_color_prompt
+ 
+        echo "Fallback 'set color_prompt force_color_prompt' executed." >&2
+      }
