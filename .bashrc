@@ -50,7 +50,7 @@ if [ -n "$force_color_prompt" ]; then
 	# We have color support; assume it's compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+	color_prompt=#yes
     else
 	color_prompt=
     fi
@@ -62,7 +62,7 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 # unset color_prompt force_color_prompt
-set color_prompt force_color_prompt
+# set color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -135,7 +135,7 @@ export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
 
 eval "$(zoxide init --cmd cd bash)"
 # Show exit status on failure.
-PROMPT_COMMAND=__prompt_command
+# PROMPT_COMMAND=__prompt_command
 
 __prompt_command() {
     local curr_exit="$?"
@@ -151,5 +151,19 @@ __prompt_command() {
         # PS1="[${BRed}$curr_exit${RCol}]$PS1"
     fi
 }
-
+eval "$(starship init bash)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source ~/.local/share/blesh/ble.sh \
+  && ble-import -d integration/fzf-completion \
+  && ble-import -d integration/fzf-key-bindings \
+  || { # The '||' executes the block inside the {} if the chained commands fail
+       echo "Warning: Failed during ble.sh setup or integration import." >&2
+       echo "Applying fallback prompt settings..." >&2
+
+       # Run the fallback command
+       # Reminder: Effectiveness depends on the shell/context.
+       # This might not be the standard Bash way to set prompt colors (PS1 variable is).
+       set color_prompt force_color_prompt
+
+       echo "Fallback 'set color_prompt force_color_prompt' executed." >&2
+     }
